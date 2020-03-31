@@ -2,7 +2,8 @@
 
 # Application controller that all other controllers inherit from
 class ApplicationController < ActionController::API
-  protect_from_forgery with :null_session
+  include ActionController::RequestForgeryProtection
+  protect_from_forgery with: :null_session
 
   def logged_in?
     !!current_user
